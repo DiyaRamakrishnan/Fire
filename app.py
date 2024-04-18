@@ -6,7 +6,7 @@ from tensorflow.keras.models import load_model
 from info_page import show_info_page
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-model_file_path = os.path.join(script_dir, 'models', 'model.keras')
+model_file_path = os.path.join(script_dir, 'models', 'model.h5')
 model = load_model(model_file_path)
 
 img_length = 50
