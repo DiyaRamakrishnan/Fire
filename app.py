@@ -109,7 +109,7 @@ def main():
 
        
        st.markdown('<div class="input-side">', unsafe_allow_html=True)
-       st.markdown('<h2 class="title" style="color: #4786a5;">Upload Image</h2>', unsafe_allow_html=True)  # Mellow blue color
+       st.markdown('<h2 class="title" style="color: coral;">Upload Image</h2>', unsafe_allow_html=True)
        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
        st.markdown('</div>', unsafe_allow_html=True)
 
@@ -117,8 +117,8 @@ def main():
       
        st.markdown('<div class="output-side">', unsafe_allow_html=True)
        if uploaded_file is not None:
-           st.markdown('<h2 class="title" style="color: #4786a5;">Detection Result</h2>', unsafe_allow_html=True)  
-           
+           st.markdown('<h2 class="title" style="color: coral;">Detection Result</h2>', unsafe_allow_html=True)
+              
            if uploaded_file.type.startswith('image'):
                img = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
                img = cv2.imdecode(img, cv2.IMREAD_COLOR)
