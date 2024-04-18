@@ -5,6 +5,8 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from info_page import show_info_page
 
+class_labels = ['DownStairs', 'UpStairs', 'Walking', 'Standing', 'DropTest']
+
 script_dir = os.path.dirname(os.path.abspath(__file__))
 model_file_path = os.path.join(script_dir, 'models', 'model.h5')
 model = load_model(model_file_path)
@@ -74,7 +76,7 @@ def generate_css(primary_color, secondary_background_color):
     </style>
     """
     return css
-    
+
 def process_image(img):
    img = cv2.resize(img, (img_length, img_width))
    input_data = np.array([img], dtype=np.float32) / 255.0
