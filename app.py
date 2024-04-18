@@ -13,68 +13,68 @@ img_length = 50
 img_width = 50
 
 def generate_css(primary_color, secondary_background_color):
-   css = f"""
- <style>
-   body {
-       font-family: 'Arial', sans-serif;
-       margin: 0;
-       padding: 0;
-       background-color: #ffffff;
-   }
-   .container {
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       height: 100vh;
-       justify-content: center;
-   }
-   .input-side, .output-side {
-       width: 80%;
-       padding: 20px;
-       border-radius: 10px;
-       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-       margin-bottom: 20px;
-   }
-   .input-side {
-       background-color: coral;
-   }
-   .output-side {
-       background-color: #fff;
-   }
-   .title {
-       font-size: 2rem;
-       color: #ffffff;
-       margin-bottom: 10px;
-   }
-   .button {
-       background-color: coral;
-       color: #ffffff;
-       border: none;
-       border-radius: 5px;
-       padding: 10px 20px;
-       cursor: pointer;
-       transition: background-color 0.3s;
-   }
-   .button:hover {
-       background-color: #ff7f50;
-   }
-   .prediction {
-       font-size: 1.5rem;
-       margin-bottom: 10px;
-   }
-   .probability {
-       font-size: 1.5rem;
-       margin-bottom: 20px;
-   }
-   .output-image {
-       max-width: 400px;
-       border-radius: 8px;
-       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   }
-</style>
-   """
-   return css
-
+    css = f"""
+    <style>
+        body {{
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }}
+        .container {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+        }}
+        .input-side, .output-side {{
+            width: 80%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }}
+        .input-side {{
+            background-color: coral;
+        }}
+        .output-side {{
+            background-color: #fff;
+        }}
+        .title {{
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }}
+        .button {{
+            background-color: coral;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }}
+        .button:hover {{
+            background-color: #ff7f50;
+        }}
+        .prediction {{
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }}
+        .probability {{
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }}
+        .output-image {{
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }}
+    </style>
+    """
+    return css
+    
 def process_image(img):
    img = cv2.resize(img, (img_length, img_width))
    input_data = np.array([img], dtype=np.float32) / 255.0
