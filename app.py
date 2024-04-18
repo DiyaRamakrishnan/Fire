@@ -22,6 +22,7 @@ def generate_css(primary_color, secondary_background_color):
             margin: 0;
             padding: 0;
             background-color: #ffffff;
+            color: #000000;
         }}
         .container {{
             display: flex;
@@ -45,12 +46,12 @@ def generate_css(primary_color, secondary_background_color):
         }}
         .title {{
             font-size: 2rem;
-            color: #ffffff;
+            color: #000000;
             margin-bottom: 10px;
         }}
         .button {{
-            background-color: coral;
-            color: #ffffff;
+            background-color: red !important;
+            color: #000000 !important;
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
@@ -58,7 +59,7 @@ def generate_css(primary_color, secondary_background_color):
             transition: background-color 0.3s;
         }}
         .button:hover {{
-            background-color: #ff7f50;
+            background-color: #ff7f50 !important;
         }}
         .prediction {{
             font-size: 1.5rem;
@@ -126,6 +127,7 @@ def main():
                    
                    st.markdown(f'<p class="prediction">Predicted Class: {result}</p>', unsafe_allow_html=True)
                    st.markdown(f'<p class="probability">Probability: {probability}</p>', unsafe_allow_html=True)
+                   st.image(img, caption='Uploaded Image', use_column_width=True)
            elif uploaded_file.type.startswith('video'):
                video_path = os.path.join(script_dir, 'temp_video.mp4')  
                with open(video_path, 'wb') as f:
