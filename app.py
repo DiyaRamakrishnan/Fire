@@ -5,8 +5,6 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from info_page import show_info_page
 
-class_labels = ['DownStairs', 'Walking', 'Standing', 'DropTest', 'UpStairs']
-
 script_dir = os.path.dirname(os.path.abspath(__file__))
 model_file_path = os.path.join(script_dir, 'models', 'model.h5')
 model = load_model(model_file_path)
@@ -83,8 +81,8 @@ def process_image(img):
    input_data = np.array([img], dtype=np.float32) / 255.0
    predictions = model.predict(input_data)
    predicted_class_index = np.argmax(predictions[0])
-   predicted_class = class_labels[predicted_class_index]
-   return predicted_class, predictions[0][predicted_class_index]
+   probability = predictions[0][predicted_class_index]
+   return predicted_class_index, probability
 
 
 def main():
@@ -92,13 +90,10 @@ def main():
    primary_color = st.config.get_option("theme.primaryColor")
    secondary_background_color = st.config.get_option("theme.secondaryBackgroundColor")
 
-
    css = generate_css(primary_color, secondary_background_color)
    st.markdown(css, unsafe_allow_html=True)
 
-
    page = st.sidebar.selectbox("Go to", ["YOURWEBSITENAME", "Info Page", "Comments", "QR Code"])
-
 
    if page == "YOURWEBSITENAME":
        st.title('YOURWEBSITENAME')
@@ -106,26 +101,21 @@ def main():
        CAPTION ON FRONT PAGE W/ MODEL
        """)
 
-
-       
        st.markdown('<div class="input-side">', unsafe_allow_html=True)
        st.markdown('<h2 class="title" style="color: coral;">Upload Image</h2>', unsafe_allow_html=True)
        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
        st.markdown('</div>', unsafe_allow_html=True)
 
-
-      
        st.markdown('<div class="output-side">', unsafe_allow_html=True)
        if uploaded_file is not None:
            st.markdown('<h2 class="title" style="color: coral;">Detection Result</h2>', unsafe_allow_html=True)
-              
+
            if uploaded_file.type.startswith('image'):
                img = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
                img = cv2.imdecode(img, cv2.IMREAD_COLOR)
                if st.button('Detect Image'):  
-                   result, probability = process_image(img)
-                   
-                   st.markdown(f'<p class="prediction">Predicted Class: {result}</p>', unsafe_allow_html=True)
+                   class_index, probability = process_image(img)
+                   st.markdown(f'<p class="prediction">Predicted Class Index: {class_index}</p>', unsafe_allow_html=True)
                    st.markdown(f'<p class="probability">Probability: {probability}</p>', unsafe_allow_html=True)
                    st.image(img, caption='Uploaded Image', use_column_width=True)
            elif uploaded_file.type.startswith('video'):
@@ -136,20 +126,17 @@ def main():
                selected_frame = process_video(video_path, frame_number)
                st.image(cv2.cvtColor(selected_frame, cv2.COLOR_BGR2RGB), caption='Selected Frame', channels='RGB', width=500, output_format='JPEG')
                st.markdown('<h2 class="title" style="color: #4786a5;">Detection Result</h2>', unsafe_allow_html=True)  # Mellow blue color
-    
-               result, probability = process_image(selected_frame)
-               st.markdown(f'<p class="prediction">Predicted Class: {result}</p>', unsafe_allow_html=True)
+               class_index, probability = process_image(selected_frame)
+               st.markdown(f'<p class="prediction">Predicted Class Index: {class_index}</p>', unsafe_allow_html=True)
                st.markdown(f'<p class="probability">Probability: {probability}</p>', unsafe_allow_html=True)
               
    elif page == "Info Page":
        show_info_page(primary_color, secondary_background_color)  
 
-
    elif page == "QR Code":
        st.title("QR Code")
        qr_image_path = "YOURqr.png"
        st.image(qr_image_path, caption="Please use the QR code to send this app to people you know!", width=500)
-
 
    elif page == "Comments":
        st.title('Comments')
@@ -161,7 +148,6 @@ def main():
        comment = st.text_area("Your Comment", max_chars=200)
        if st.button("Submit"):
            if len(comment.strip()) > 0:
-               
                with open("comments.txt", "a") as file:
                    file.write(f"{user_name}: {comment}\n")
                st.success("Comment submitted successfully!")
@@ -175,27 +161,20 @@ def main():
            comments = file.readlines()
        if comments:
            for comment_text in comments:
-               
                parts = comment_text.split(":", 1)
                if len(parts) == 2:
                    name, comment_msg = parts
-                   
                    st.write(f"**{name.strip()}**")
                    st.write(f"{comment_msg.strip()}")
                else:
                    st.write(comment_text.strip())
 
-
-       
        if st.button("Delete All Comments"):
-           
            with open("comments.txt", "w") as file:
                file.truncate(0)
            st.success("All comments deleted successfully!")
-           
            st.experimental_rerun()
 
 
 if __name__ == "__main__":
    main()
-
