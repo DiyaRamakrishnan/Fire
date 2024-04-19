@@ -5,6 +5,8 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from info_page import show_info_page
 
+class_labels = ['DownStairs', 'Walking', 'Standing', 'DropTest', 'UpStairs']
+
 script_dir = os.path.dirname(os.path.abspath(__file__))
 model_file_path = os.path.join(script_dir, 'models', 'model.h5')
 model = load_model(model_file_path)
@@ -81,9 +83,8 @@ def process_image(img):
    input_data = np.array([img], dtype=np.float32) / 255.0
    predictions = model.predict(input_data)
    predicted_class_index = np.argmax(predictions[0])
-   probability = predictions[0][predicted_class_index]
-   return predicted_class_index, probability
-
+   predicted_class = class_labels[predicted_class_index]
+   return predicted_class, predictions[0][predicted_class_index]
 
 def main():
 
