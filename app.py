@@ -5,7 +5,7 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from info_page import show_info_page
 
-class_labels = ['DownStairs', 'UpStairs', 'Walking', 'DropTest', 'Standing']
+class_labels = ['DownStairs', 'DropTest', 'Standing', 'UpStairs', 'Walking']
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 model_file_path = os.path.join(script_dir, 'models', 'model.h5')
