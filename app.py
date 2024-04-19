@@ -99,7 +99,7 @@ def main():
    if page == "Find My Firefighter":
        st.title('Find My Firefighter')
        st.write("""
-       CAPTION ON FRONT PAGE W/ MODEL
+       Detect your FIREFIGHTERS' position below
        """)
 
        st.markdown('<div class="input-side">', unsafe_allow_html=True)

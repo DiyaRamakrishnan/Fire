@@ -42,38 +42,34 @@ def show_info_page(primary_color, secondary_background_color):
     st.markdown('<div class="info-content">', unsafe_allow_html=True)
     st.header('About Project')
     st.write("""
-    Write about your project
+    We create a reliable motion tracking device and a code that recognizes user activity. Our website allows users to input collected data in order to detect firefighters' positions during their missions, Additionally, this website serves as a space for customer support, where people can upload their own information easily!
     """)
     st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="info-content">', unsafe_allow_html=True)
-    st.header('About Project')
-    st.write("""
-    Write about your project
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    st.markdown('<div class="info-content">', unsafe_allow_html=True)
-    st.header('About FIRST NAME LAST NAME')
+    st.header('About Riley Mattheis and Sydney Leslie')
 
     st.subheader('Background')
     st.write("""
-    Write about yourself! Your hobbies, who you are, etc.
+    We are both upperclassmen at Nouvel Catholic Central. We have been able to work on this research due to the fund graciously provided the AH Nickless foundation. We enjoy participating in extracurricular activities that involve science. One of our favorite activities that we do together is Science Olympiads. 
     """)
     
     st.subheader('Inspiration')
     st.write("""
-    Why did you want to do this project?
+    The inspiration came from Riley's father who has been a Firefighter and EMT for over 30 years. Ever since Riley was a little girl she's always worried about where her father goes when he enters a burning building. By creating a tracking device and a website, we can now track where he is. We hope to extend this benefit to many others through our device and acessible website!
     """)
     
     st.subheader('Mission')
     st.write("""
-    Purpose of this website?
+    The purpose of this website is to allow customers to upload their image and detect what motion is happening, as a firefighter is in a building. The second purpose of this website is to provide customer support to others that would like to use this website as well.
     """)
     
     st.subheader('Contact')
     st.write("""
-    Write your contact information!
+    Feel free to contact us! 
+    mattheisriley@gmail.com   
+    misscewagner@gmail.com
+    sleslie@student.nouvelcatholic.org
     """)
     
     st.markdown('</div>', unsafe_allow_html=True)
