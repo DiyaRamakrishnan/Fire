@@ -44,7 +44,8 @@ def show_info_page(primary_color, secondary_background_color):
     We create a reliable motion tracking device and a code that recognizes user activity. Our website allows users to input collected data in order to detect firefighters' positions. This website also serves as a space for customer support, where people can upload their own information easily!
     """)
     st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('<div class="info-content">', unsafe_allow_html=True)
+    
+
     st.header('About Riley Mattheis and Sydney Leslie')
 
     st.subheader('Background')
