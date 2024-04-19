@@ -136,7 +136,7 @@ def main():
 
    elif page == "QR Code":
        st.title("QR Code")
-       qr_image_path = "YOURqr.png"
+       qr_image_path = "example_qr_code.png"
        st.image(qr_image_path, caption="Please use the QR code to send this app to people you know!", width=500)
 
    elif page == "Comments":
