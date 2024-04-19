@@ -94,10 +94,10 @@ def main():
    css = generate_css(primary_color, secondary_background_color)
    st.markdown(css, unsafe_allow_html=True)
 
-   page = st.sidebar.selectbox("Go to", ["YOURWEBSITENAME", "Info Page", "Comments", "QR Code"])
+   page = st.sidebar.selectbox("Go to", ["Find My Firefighter", "Info Page", "Comments", "QR Code"])
 
-   if page == "YOURWEBSITENAME":
-       st.title('YOURWEBSITENAME')
+   if page == "Find My Firefighter":
+       st.title('Find My Firefighter')
        st.write("""
        CAPTION ON FRONT PAGE W/ MODEL
        """)
