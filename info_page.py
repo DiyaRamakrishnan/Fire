@@ -65,10 +65,7 @@ def show_info_page(primary_color, secondary_background_color):
     
     st.subheader('Contact')
     st.write("""
-    Feel free to contact us! 
-    mattheisriley@gmail.com   
-    misscewagner@gmail.com
-    sleslie@student.nouvelcatholic.org
+    Feel free to contact us at: mattheisriley@gmail.com, misscewagner@gmail.com, & sleslie@student.nouvelcatholic.org
     """)
     
     st.markdown('</div>', unsafe_allow_html=True)
